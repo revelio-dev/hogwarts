@@ -53,7 +53,7 @@ header img {
   width: 45.8%;
 }
 header h1 {
-  position: fixed;
+  position:absolute;
   top: 2rem;
   right: 2rem;
   font-size: 12vw;
