@@ -13,7 +13,7 @@
         </div>
       </div>
       <div v-else>
-        <h1>NOOOO</h1>
+        <p class="bg-danger text-white font-weight-bold rounded">No se encontró la ubicación</p>
       </div>
     </div>
   </div>
