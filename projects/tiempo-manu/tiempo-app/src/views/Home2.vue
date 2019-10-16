@@ -31,7 +31,7 @@
             </div>
             <div></div>
             <div>
-              <h1>{{ info.name }}, {{ info.sys.country }}</h1>
+              <h1>{{ info.city }}, {{ info.sys.country }}</h1>
               <h2>
                 <span>Lon:</span>
                 {{ info.coord.lon }}
@@ -68,17 +68,15 @@ export default {
   data() {
     return {
       form: {
-        ciudad: ""
+        name: []
       },
       show: true
     };
   },
   mounted() {
-    axios
-      .get(
-        "https://api.openweathermap.org/data/2.5/weather?q=Rye,uk&appid=375b5b72defecfdfccfa090d50f49db4"
-      )
-      .then(response => (this.info = response.data));
+    const url =
+      "https://api.openweathermap.org/data/2.5/weather?q=Rye,uk&appid=375b5b72defecfdfccfa090d50f49db4";
+    axios.get(url).then(response => (this.info = response.data));
   },
   methods: {
     onSubmit(evt) {
