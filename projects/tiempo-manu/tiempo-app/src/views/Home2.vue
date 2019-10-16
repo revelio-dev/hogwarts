@@ -30,8 +30,26 @@
               </b-form>
             </div>
             <div></div>
-            <div class="city-box" v-for="(city, index) in cities" :key="index">
-              <div class="city__name">{{city.name}}</div>
+            <div>
+              <h1>{{ info.name }}, {{ info.sys.country }}</h1>
+              <h2>
+                <span>Lon:</span>
+                {{ info.coord.lon }}
+                <span>Lat:</span>
+                {{ info.coord.lat }}
+              </h2>
+              <h2>
+                <span>Wind speed:</span>
+                {{ info.wind.speed }}mph
+              </h2>
+              <h2>
+                <span>Wind deg:</span>
+                {{ info.wind.deg }}&deg;
+              </h2>
+              <h2>
+                <span>Pressure:</span>
+                {{ info.main.pressure }}
+              </h2>
             </div>
           </b-card-body>
         </b-col>
@@ -55,14 +73,12 @@ export default {
       show: true
     };
   },
-  computed: {
-    ...mapState({
-      cities: state => state.cities.list,
-      citiesTemp: state => state.cities.list.main
-    }),
-    cdnPath: function() {
-      return config.cdnPath;
-    }
+  mounted() {
+    axios
+      .get(
+        "https://api.openweathermap.org/data/2.5/weather?q=Rye,uk&appid=375b5b72defecfdfccfa090d50f49db4"
+      )
+      .then(response => (this.info = response.data));
   },
   methods: {
     onSubmit(evt) {
