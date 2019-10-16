@@ -10,8 +10,9 @@
   </div>-->
   <div>
     <b-navbar>
-      <img src="../assets/logo.png" alt="logo" class="logo">
-      <!--<b-navbar-brand href="#">El tiempo</b-navbar-brand>-->
+      <b-navbar-brand href="/">
+        <img src="@/assets/logo.png" alt="logo" class="logo">
+      </b-navbar-brand>
 
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
