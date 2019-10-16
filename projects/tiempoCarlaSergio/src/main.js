@@ -9,12 +9,14 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 import Buscador from '@/components/Buscador.vue';
 import Cabecera from '@/components/Cabecera.vue';
 
+
 Vue.use(BootstrapVue);
 
 Vue.config.productionTip = false;
 
 Vue.component('buscador', Buscador)
 Vue.component('cabecera', Cabecera)
+
 
 
 new Vue({

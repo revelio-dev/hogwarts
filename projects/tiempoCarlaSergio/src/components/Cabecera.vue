@@ -10,7 +10,7 @@
   </div>-->
   <div>
     <b-navbar>
-      <b-navbar-brand href="/">
+      <b-navbar-brand :to="{name: 'detalles'}">
         <img src="@/assets/logo.png" alt="logo" class="logo">
       </b-navbar-brand>
 
