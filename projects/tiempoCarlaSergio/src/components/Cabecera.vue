@@ -10,7 +10,9 @@
   </div>-->
   <div>
     <b-navbar>
-      <b-navbar-brand href="#">El tiempo</b-navbar-brand>
+      <b-navbar-brand href="/">
+        <img src="@/assets/logo.png" alt="logo" class="logo">
+      </b-navbar-brand>
 
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
@@ -23,9 +25,14 @@
 
 <script>
 export default {
-  name: "app"
+  name: "cabecera"
 };
 </script>
 
-<style>
+<style lang="scss">
+$tamaño-logo: 4em;
+.logo{
+  width: $tamaño-logo;
+}
+
 </style>
