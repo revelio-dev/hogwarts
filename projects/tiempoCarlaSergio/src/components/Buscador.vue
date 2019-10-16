@@ -12,7 +12,7 @@
 <script>
 import json from "@/Json/ciudades.json"
 export default {
-  name: "app",
+  name: "buscador",
   data () {
     return {
       param: "",
