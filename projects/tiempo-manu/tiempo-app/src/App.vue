@@ -41,8 +41,8 @@ body {
 header {
   background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/mountain-range.jpg)
     no-repeat;
-  padding-top: 61.93333333%;
-  background-size: cover;
+  padding-top: 33%;
+  background-size: 100%;
   font-family: "Sucrose Bold Two";
 }
 header img {

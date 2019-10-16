@@ -11,22 +11,23 @@
             <div>
               <b-form @submit="onSubmit" @reset="onReset" v-if="show">
                 <b-form-group
-                  id="input-city"
+                  id="input-group-1"
                   label="City:"
                   label-for="input-1"
-                  description="Enter your city name."
+                  description="Search your city."
                 >
                   <b-form-input
                     id="input-1"
-                    v-model="form.city"
+                    v-model="form.ciudad"
                     type="text"
                     required
-                    placeholder="City"
+                    placeholder="Enter City Name"
                   ></b-form-input>
                 </b-form-group>
+
+                <b-button type="submit" variant="primary">Get your Weather</b-button>
+                <b-button type="reset" variant="danger">Reset your Weather</b-button>
               </b-form>
-              <b-button type="submit" variant="primary">Get Weather</b-button>
-              <b-button type="reset" variant="danger">Reset Weather</b-button>
             </div>
             <div></div>
             <div class="city-box" v-for="(city, index) in cities" :key="index">
@@ -49,8 +50,7 @@ export default {
   data() {
     return {
       form: {
-        city: "",
-        weather: null
+        ciudad: ""
       },
       show: true
     };
@@ -67,38 +67,15 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      console.log(form.city);
+      alert(JSON.stringify(this.form));
     },
     onReset(evt) {
-      this.form.city = "";
-      this.form.weather = null;
+      this.form.ciudad = "";
       // Trick to reset/clear native browser form validation state
       this.show = false;
       this.$nextTick(() => {
         this.show = true;
       });
-    },
-    getCities(url) {
-      return axios
-        .get(url)
-        .then(res => {
-          this.$store.dispatch("setStateData", {
-            key: "cities",
-            data: res.data
-          });
-        })
-        .catch(error => {
-          console.log("404");
-        });
-    }
-  },
-  created() {
-    const url =
-      config.apiRoot +
-      "/group?id=745044,2988507,2950159,2643743,6539761&units=metric&APPID=" +
-      config.apiKey;
-    if (this.$store.state.cities.length == 0) {
-      this.getCities(url);
     }
   }
 };
