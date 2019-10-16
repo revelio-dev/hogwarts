@@ -12,13 +12,25 @@
     <div class="container">
       <br />
       <router-view />
+      <weather></weather>
+      <clouds></clouds>
     </div>
   </div>
 </template>
 
 <script>
+import Weather from "../src/components/Weather/Weather";
+import Clouds from "../src/components/Weather/Clouds";
+import Coord from "../src/components/Weather/Coord";
+import Sun from "../src/components/Weather/Sun";
+
 export default {
-  components: {}
+  components: {
+    Weather,
+    Clouds,
+    Coord,
+    Sun
+  }
 };
 </script>
 <style>
