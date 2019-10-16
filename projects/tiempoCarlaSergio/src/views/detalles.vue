@@ -9,7 +9,8 @@
           <!-- Temperatura-->
           <h1 class="display-1">{{ ciudadActual.temperature }}</h1>
           <!-- Cielo (Soleado, Nublado, etc.)-->
-          <p> {{ ciudadActual.sky }} </p>
+          <img :src="require(`@/assets/${ciudadActual.sky}.png`)" alt="Estado" class="icono mb-1">
+          <p><small> {{ ciudadActual.sky }} </small></p>
         </div>
       </div>
       <div v-else>
@@ -37,6 +38,10 @@
 }
 </script>
 
-<style>
+<style lang="scss">
+$tamaño-icono: 4em;
+.icono{
+  width: $tamaño-icono;
+}
 
 </style>
