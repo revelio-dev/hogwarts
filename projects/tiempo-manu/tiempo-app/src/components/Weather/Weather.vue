@@ -1,6 +1,5 @@
 <template>
   <div id="weatherApp">
-    <p>{{url}}</p>
     <form v-on:submit.prevent="getWeather">
       <p>
         <input type="text" name="location" v-model="location" />
@@ -41,6 +40,7 @@ export default {
           this.url +
             "find?q=" +
             this.location +
+            this.country +
             "&units=imperial&appid=" +
             this.key
         )
