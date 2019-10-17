@@ -30,6 +30,9 @@ import Weather from "../src/components/Weather/Weather";
 import Winds from "../src/components/Weather/Winds";
 
 export default {
+  mounted() {
+    console.log(process.env.apiKey);
+  },
   components: {
     Clouds,
     Coord,

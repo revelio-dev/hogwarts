@@ -1,7 +1,7 @@
 <template>
   <div id="cloud" class="col-xs-4">
     <h2>Clouds</h2>
-    <p>Coverage - {{ cloud.all }}%</p>
+    <p>Coverage - {{ cloud }}%</p>
   </div>
 </template>
 

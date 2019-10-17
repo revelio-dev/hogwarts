@@ -1,5 +1,6 @@
 <template>
   <div id="weatherApp">
+    <p>{{url}}</p>
     <form v-on:submit.prevent="getWeather">
       <p>
         <input type="text" name="location" v-model="location" />
@@ -21,36 +22,34 @@
 </template>
 
 <script>
-import apiKey from "../../config";
+import axios from "axios";
+
 export default {
   data: function() {
     return {
       location: "",
-      apiKey: apiKey,
+      url: Vue.config.app.VUE_APP_API_ROOT,
+      key: Vue.config.app.VUE_APP_API_KEY,
       weather: [],
       displayWeather: false
     };
   },
-
   methods: {
     getWeather: function() {
-      return this.$http
+      axios
         .get(
-          "http://api.openweathermap.org/data/2.5/weather?q=" +
+          this.url +
+            "find?q=" +
             this.location +
-            "&appid=" +
-            this.apiKey
+            "&units=imperial&appid=" +
+            this.key
         )
-        .then(
-          response => {
-            this.weather = response.body;
-            this.displayWeather = true;
-          },
-          response => {
-            this.weather = [];
-            this.displayWeather = false;
-          }
-        );
+        .then(response => {
+          console.log(this.weather);
+        })
+        .catch(error => {
+          console.log("Error", error);
+        });
     }
   }
 };

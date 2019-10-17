@@ -10,6 +10,9 @@ import '../src/assets/css/app.css'
 import { FormPlugin } from 'bootstrap-vue'
 
 Vue.config.productionTip = false
+Vue.config.app = process.env
+
+
 
 Vue.use(BootstrapVue)
 Vue.use(FormPlugin);

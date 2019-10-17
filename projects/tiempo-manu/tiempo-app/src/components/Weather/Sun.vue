@@ -1,8 +1,8 @@
 <template>
   <div id="sun" class="col-xs-4">
     <h2>Sun</h2>
-    <p>Sunrise - {{ timestampToDate(sun.sunrise) }}</p>
-    <p>Sunset - {{ timestampToDate(sun.sunset) }}</p>
+    <p>Sunrise - {{ timestampToDate(sun) }}</p>
+    <p>Sunset - {{ timestampToDate(sun) }}</p>
   </div>
 </template>
 
