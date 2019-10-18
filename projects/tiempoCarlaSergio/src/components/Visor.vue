@@ -8,7 +8,7 @@
         <!-- Cielo (Soleado, Nublado, etc.)-->
         <img :src="`http://openweathermap.org/img/wn/${ ciudad.icon }.png`" alt="Estado" class="icono mb-1">
         <!--<img :src="require(`@/assets/${ciudad.estado}.png`)" alt="Estado" class="icono mb-1">-->
-        <p><small> {{ (ciudad.estado).toUpperCase() }} </small></p> 
+        <p><small> {{ ciudad.estado.toUpperCase() }} </small></p> 
      </div>
   </div>
   <div v-else>

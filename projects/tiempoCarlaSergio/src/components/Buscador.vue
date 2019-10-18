@@ -6,6 +6,7 @@
         <b-button type="submit"  class="ml-2">Mostrar</b-button>
       </div>
     </b-form-group>
+    <p v-if="buscando">Buscando...</p>
   </b-form>
 </template>
 
@@ -15,7 +16,9 @@ export default {
   name: "buscador",
   data () {
     return {
+      param: null,
       ciudades: null,
+      buscando: false,
       ciudadEncontrada: {
          nombre: null,
          temp: null,
@@ -28,7 +31,7 @@ export default {
   },
   methods: {
     search: function() {
-      
+      this.buscando = true
       axios
      .get(`https://api.openweathermap.org/data/2.5/weather?q=${ this.param },es&appid=375b5b72defecfdfccfa090d50f49db4&lang=es&units=metric`)
      .then(response => {
@@ -38,16 +41,23 @@ export default {
        this.ciudadEncontrada.temp = this.ciudades.main.temp;
        this.ciudadEncontrada.estado = this.ciudades.weather[0].description;
        this.ciudadEncontrada.icon = this.ciudades.weather[0].icon;
+     }).catch(()=> {
+       this.ciudadEncontrada = {
+         nombre: null,
+         temp: null,
+         estado: null,
+         icon: null}
+     }).finally(() => {
+        this.buscando = false
+        if (this.ciudadEncontrada.nombre) {
+          console.log("Existe");
+          console.log(this.ciudadEncontrada)
+          this.$emit('change', this.ciudadEncontrada)
+        } else {
+          console.log("No existe");
+          this.$emit('change', null)
+        }
      })
-
-      if (this.ciudadEncontrada.name) {
-        console.log("Existe");
-        console.log(this.ciudadEncontrada)
-        this.$emit('change', this.ciudadEncontrada)
-      } else {
-        console.log("No existe");
-        this.$emit('change', null)
-      }
     }
   }
 };
