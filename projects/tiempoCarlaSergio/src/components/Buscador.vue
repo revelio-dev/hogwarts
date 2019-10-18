@@ -40,7 +40,7 @@ export default {
        this.ciudadEncontrada.icon = this.ciudades.weather[0].icon;
      })
 
-      if (this.ciudadEncontrada) {
+      if (this.ciudadEncontrada.name) {
         console.log("Existe");
         console.log(this.ciudadEncontrada)
         this.$emit('change', this.ciudadEncontrada)
