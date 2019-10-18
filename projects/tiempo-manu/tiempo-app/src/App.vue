@@ -12,36 +12,13 @@
     <div class="container">
       <br />
       <router-view />
-      <weather></weather>
-      <clouds></clouds>
-      <sun></sun>
-      <winds></winds>
     </div>
   </div>
 </template>
 
 <script>
-import Clouds from "../src/components/Weather/Clouds";
-import Coord from "../src/components/Weather/Coord";
-import Sun from "../src/components/Weather/Sun";
-import Temperature from "../src/components/Weather/Temperature";
-import Weatherdisplay from "../src/components/Weather/Weatherdisplay";
-import Weather from "../src/components/Weather/Weather";
-import Winds from "../src/components/Weather/Winds";
-
 export default {
-  mounted() {
-    console.log(process.env.apiKey);
-  },
-  components: {
-    Clouds,
-    Coord,
-    Sun,
-    Temperature,
-    Weatherdisplay,
-    Weather,
-    Winds
-  }
+  components: {}
 };
 </script>
 <style>
