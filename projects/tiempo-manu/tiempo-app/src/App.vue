@@ -3,15 +3,14 @@
     <div class="header">
       <div class="header-img"></div>
     </div>
-    <base href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/" />
     <header>
       <h1>
         El
         <span>Tiempo</span>
       </h1>
-      <img src="mountain-range-front.png" />
     </header>
     <div class="container">
+      <br />
       <router-view />
     </div>
   </div>
@@ -42,8 +41,8 @@ body {
 header {
   background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/mountain-range.jpg)
     no-repeat;
-  padding-top: 61.93333333%;
-  background-size: cover;
+  padding-top: 33%;
+  background-size: 100%;
   font-family: "Sucrose Bold Two";
 }
 header img {
@@ -53,7 +52,7 @@ header img {
   width: 45.8%;
 }
 header h1 {
-  position: fixed;
+  position: absolute;
   top: 2rem;
   right: 2rem;
   font-size: 12vw;
