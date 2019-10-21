@@ -2,8 +2,8 @@
   <b-form @submit.stop.prevent="changeUrl()">
     <b-form-group id="input-group-1" label="Ubicación: " label-for="input-1">
       <div class="d-flex justify-content-center">
-        <b-form-input  @keyup.enter="changeUrl()" v-model="param"  id="input-1" required placeholder="Ubicación"></b-form-input>
-        <b-button type="submit"  class="ml-2">Mostrar</b-button>
+        <b-form-input @input="throttledMethod()" @keyup.enter="changeUrl()" v-model="param"  id="input-1" required placeholder="Ubicación"></b-form-input>
+        <b-button type="submit" class="ml-2">Mostrar</b-button>
       </div>
     </b-form-group>
     <p v-if="buscando">Buscando...</p>
@@ -12,6 +12,7 @@
 
 <script>
 import axios from 'axios';
+import _ from 'lodash';
 export default {
   name: "buscador",
   data () {
@@ -30,11 +31,15 @@ export default {
     if(this.$route.query.ubicacion){
       this.search(this.$route.query.ubicacion);
     }
+    this.throttledMethod();
   },
   methods: {
     changeUrl(){
       this.$router.push({ name: 'detalles', query: { ubicacion: this.param } }).catch(err => { });
     },
+    throttledMethod: _.debounce(function() {
+      this.changeUrl();
+    }, 2000),
     search: function(ubicacion) {
       this.buscando = true
       axios
@@ -67,7 +72,6 @@ export default {
       if(this.$route.query.ubicacion){
         this.search(this.$route.query.ubicacion)
       }
-      
     }
   }
 };
