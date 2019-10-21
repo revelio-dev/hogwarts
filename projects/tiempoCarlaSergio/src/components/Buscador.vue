@@ -2,39 +2,58 @@
   <b-form @submit.stop.prevent="search()">
     <b-form-group id="input-group-1" label="Ubicación: " label-for="input-1">
       <div class="d-flex justify-content-center">
-        <b-form-input  @keyup.enter="submit" v-model="param"  id="input-1" required placeholder="Ubicación"></b-form-input>
+        <b-form-input  @keyup.enter="search()" v-model="param"  id="input-1" required placeholder="Ubicación"></b-form-input>
         <b-button type="submit"  class="ml-2">Mostrar</b-button>
       </div>
     </b-form-group>
+    <p v-if="buscando">Buscando...</p>
   </b-form>
 </template>
 
 <script>
-import json from "@/Json/ciudades.json"
+import axios from 'axios';
 export default {
   name: "buscador",
   data () {
     return {
-      param: "",
-      ciudades: json,
+      param: null,
+      ciudades: null,
+      buscando: false,
+      ciudadEncontrada: {
+         nombre: null,
+         temp: null,
+         estado: null,
+         icon: null}
     }
+  },
+  mounted (){
+    
   },
   methods: {
     search: function() {
-      let ciudadEncontrada = null
-      this.ciudades.forEach((ciudad) => {
-        if(this.param==ciudad.name||this.param==ciudad.name.toLowerCase()){
-          ciudadEncontrada = ciudad
+      this.buscando = true
+      axios
+     .get(`https://api.openweathermap.org/data/2.5/weather?q=${ this.param },es&appid=375b5b72defecfdfccfa090d50f49db4&lang=es&units=metric`)
+     .then(response => {
+       this.ciudades = response.data;
+       this.ciudadEncontrada.nombre = this.ciudades.name;
+       this.ciudadEncontrada.temp = this.ciudades.main.temp;
+       this.ciudadEncontrada.estado = this.ciudades.weather[0].description;
+       this.ciudadEncontrada.icon = this.ciudades.weather[0].icon;
+     }).catch(()=> {
+       this.ciudadEncontrada = {
+         nombre: null,
+         temp: null,
+         estado: null,
+         icon: null}
+     }).finally(() => {
+        this.buscando = false
+        if (this.ciudadEncontrada.nombre) {
+          this.$emit('change', this.ciudadEncontrada)
+        } else {
+          this.$emit('change', null)
         }
-      });
-
-      if (ciudadEncontrada) {
-        console.log("Existe");
-        this.$emit('change', ciudadEncontrada)
-      } else {
-        console.log("No existe");
-        this.$emit('change', null)
-      }
+     })
     }
   }
 };
