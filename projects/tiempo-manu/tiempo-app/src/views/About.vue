@@ -1,8 +1,18 @@
-<template></template>
+<template>
+    <h1>About</h1>
+</template>
 
 <script>
-export default {};
+
+    export default {
+        name: "About",
+        components:{},
+        data(){
+            return{}
+        }
+    }
 </script>
 
-<style>
+<style scoped>
+
 </style>
