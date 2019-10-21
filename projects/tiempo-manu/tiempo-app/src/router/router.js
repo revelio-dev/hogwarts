@@ -9,7 +9,7 @@ import Searchweather from "../components/Weather-Component/Searchweather";
 Vue.use(Router);
 
 export default new Router({
-    mode: "history",
+    //mode: "history",
     base: process.env.BASE_URL,
     routes: [{
         path: "/",
@@ -24,10 +24,10 @@ export default new Router({
         name: '404',
         component: Errorpage
     }, {
-        path:"/app",
-        name:"weather",
-        component:Searchweather
-        }
+        path: "/app",
+        name: "weather",
+        component: Searchweather
+    }
     ]
 });
 
