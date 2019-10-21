@@ -9,16 +9,23 @@
         <span>Tiempo</span>
       </h1>
     </header>
-    <div class="container">
-      <br />
-      <router-view />
+    <div class="navigation">
+      <Navigation></Navigation>
+      <router-view/>
+    </div>
+    <div class="container-fluid">
     </div>
   </div>
 </template>
 
 <script>
+import Navigation from "./components/Navigation";
+
 export default {
-  components: {}
+  components: {
+    Navigation
+  }
+
 };
 </script>
 <style>
@@ -43,7 +50,7 @@ header {
     no-repeat;
   padding-top: 33%;
   background-size: 100%;
-  font-family: "Sucrose Bold Two";
+  font-family: "Sucrose Bold Two",serif;
 }
 header img {
   position: absolute;
@@ -65,10 +72,10 @@ header h1 span {
   font-size: 8.75vw;
 }
 main {
-  background: #fff;
+  background: #E4F1FE;
   position: relative;
   border: 1px solid #fff;
-  font-family: "IM Fell French Canon Pro";
+  font-family: "IM Fell French Canon Pro",serif;
   font-size: 1.4rem;
   padding: 2rem 25%;
   line-height: 1.6;
