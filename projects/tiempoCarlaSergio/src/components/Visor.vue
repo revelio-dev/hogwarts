@@ -2,12 +2,13 @@
   <div v-if="ciudad" >
     <div>
         <!-- Nombre Ciudad-->
-        <p> {{ ciudad.name }}</p>
+        <p> {{ ciudad.nombre }}</p>
         <!-- Temperatura-->
-        <h1 class="display-1">{{ ciudad.temperature }}</h1>
+        <h1 class="display-1">{{ tempEntero }}º</h1>
         <!-- Cielo (Soleado, Nublado, etc.)-->
-        <img :src="require(`@/assets/${ciudad.sky}.png`)" alt="Estado" class="icono mb-1">
-        <p><small> {{ ciudad.sky }} </small></p> 
+        <img :src="`http://openweathermap.org/img/wn/${ ciudad.icon }.png`" alt="Estado" class="icono mb-1">
+        <!--<img :src="require(`@/assets/${ciudad.estado}.png`)" alt="Estado" class="icono mb-1">-->
+        <p><small> {{ ciudad.estado | capitalize}} </small></p> 
      </div>
   </div>
   <div v-else>
@@ -19,6 +20,19 @@
 export default {
     props: {
         ciudad: Object
+    },
+    // Computed properties
+    computed: {
+      // La variable tempEntero devuelve la temperatura de la ciudad sin decimales
+      tempEntero: function() {
+        return parseInt(this.ciudad.temp);
+      }
+    },
+    // Filtro para poner en mayusculas un string
+    filters: {
+      capitalize: function(value) {
+         return value.toUpperCase();
+      }
     }
 }
 </script>
