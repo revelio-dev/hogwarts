@@ -36,7 +36,6 @@ export default {
      .get(`https://api.openweathermap.org/data/2.5/weather?q=${ this.param },es&appid=375b5b72defecfdfccfa090d50f49db4&lang=es&units=metric`)
      .then(response => {
        this.ciudades = response.data;
-       console.log(this.ciudades);
        this.ciudadEncontrada.nombre = this.ciudades.name;
        this.ciudadEncontrada.temp = this.ciudades.main.temp;
        this.ciudadEncontrada.estado = this.ciudades.weather[0].description;
@@ -50,11 +49,8 @@ export default {
      }).finally(() => {
         this.buscando = false
         if (this.ciudadEncontrada.nombre) {
-          console.log("Existe");
-          console.log(this.ciudadEncontrada)
           this.$emit('change', this.ciudadEncontrada)
         } else {
-          console.log("No existe");
           this.$emit('change', null)
         }
      })
