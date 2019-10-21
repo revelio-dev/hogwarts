@@ -22,7 +22,7 @@
     </b-row>
     <section v-if="city.length" class="weather-result">
       <div align="center" class="container" id="city-name">
-        <h1>{{city}}, {{country}}</h1>
+        <h1>{{city}} {{country}}</h1>
       </div>
       <div class="col-12" align="center">
         <h3>
@@ -30,13 +30,18 @@
         </h3>
       </div>
     </section>
-
-    <div class="container-fluid">
+    <div v-if="city.error!=true" class="error-msg">
+      <b-alert
+        :show="dismissCountDown"
+        dismissible
+        variant="warning"
+        @dismissed="dismissCountDown=0"
+        @dismiss-count-down="countDownChanged"
+      >Error en la ciudad</b-alert>
+    </div>
+    <div v-if="!city.city" class="container-fluid">
       <child-humidity v-if="weatherData" :data="weatherData"></child-humidity>
       <child-icon v-if="weatherData" :icon="icon"></child-icon>
-    </div>
-    <div class="container-fluid" align="left" style="margin-top: 10px">
-      <b-button :disabled="!query.length" @click="showWeather" variant="primary">Search</b-button>
     </div>
   </b-container>
 </template>
@@ -63,7 +68,9 @@ export default {
       cod: null,
       icon: "",
       show: true,
-      error: ""
+      error: "",
+      dismissSecs: 5,
+      dismissCountDown: 0
     };
   },
   methods: {
@@ -88,16 +95,19 @@ export default {
         })
         .catch(error => {
           this.error = true;
-          this.city = "";
+          this.city = {};
+          this.weatherData = "";
+          this.icon = {};
           // eslint-disable-next-line no-console
-          console.log(Object.keys(error), error.message);
+          //console.log(Object.keys(error), error.message);
+          this.showAlert();
         });
     },
-    onReset() {
-      this.show = false;
-      this.$nextTick(() => {
-        this.show = true;
-      });
+    countDownChanged(dismissCountDown) {
+      this.dismissCountDown = dismissCountDown;
+    },
+    showAlert() {
+      this.dismissCountDown = this.dismissSecs;
     }
   }
 };
