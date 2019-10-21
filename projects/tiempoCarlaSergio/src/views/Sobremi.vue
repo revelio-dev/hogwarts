@@ -7,8 +7,8 @@
       por Real Decreto Legislativo 1/1996 de 12 de abril.Protección de datos</p>
       <div class="text-center">
         <p class="font-weight-bold">TIEMPO &copy;</p>
-        <p> <span class="font-italic">Teléfono:</span> (+34) 881 999 654</p>
-        <p><span class="font-italic">Email:</span> tiempo@tiempo.es</p>
+        <p> <span class="font-italic">Teléfono:</span><a href="tel:34 881 999 65"> (+34) 881 999 654</a></p>
+        <p><span class="font-italic">Email:</span><a href="mailto:tiempo@tiempo.es"> tiempo@tiempo.es</a></p>
         <p>Conserjería de Medio Ambiente, Territorio y Vivienda</p>
       </div>
   </div>
