@@ -1,26 +1,36 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import service from "@/services/service.js";
+
 Vue.use(Vuex)
 
-const store = () => new Vuex.Store({
+const store = {
     state: {
-        cities: [],
-        citiesDetail: []
+        weather: {},
+        dataIsRecived: false
     },
     mutations: {
-        SET_DEFINITION(state, payload) {
-            state[payload.key] = payload.data;
-        },
-    },
-    getters: {
-
-    },
-    actions: {
-        setStateData({ commit }, payload) {
-            commit('SET_DEFINITION', { key: payload.key, data: payload.data });
+        UPDATE_WETHER(state) {
+            service
+                .getWeather().then(
+                    response => {
+                        state.weather = response.data.data[0]
+                        state.dataIsRecived = true;
+                        console.log(response)
+                    }
+                ).catch(
+                    error => {
+                        console.log("Error: ", error.response)
+                    }
+                )
         }
     },
-})
+    actions: {
+        updateWeather(context) {
+            context.commit("UPDATE_WEATHER")
+        }
+    }
+}
 
 export default store

@@ -2,19 +2,7 @@
   <div id="details" class="text-center">
     <buscador @change="cargaCiudad"></buscador>
     <div v-if="iniciado" >
-      <div v-if="ciudadActual" >
-        <div>
-          <!-- Nombre Ciudad-->
-          <p> {{ ciudadActual.name }}</p>
-          <!-- Temperatura-->
-          <h1 class="display-1">{{ ciudadActual.temperature }}</h1>
-          <!-- Cielo (Soleado, Nublado, etc.)-->
-          <p> {{ ciudadActual.sky }} </p>
-        </div>
-      </div>
-      <div v-else>
-        <h1>NOOOO</h1>
-      </div>
+      <visor :ciudad="ciudadActual"></visor>
     </div>
   </div>
 </template>
@@ -37,6 +25,10 @@
 }
 </script>
 
-<style>
+<style lang="scss">
+$tamaño-icono: 4em;
+.icono{
+  width: $tamaño-icono;
+}
 
 </style>
