@@ -29,16 +29,14 @@
           <em>{{weatherDescription}}</em>
         </h3>
       </div>
-      <div class="container-fluid" align="center" style="background: darkturquoise; ">
-        <img :src="icon" alt="Weather icon" />
-      </div>
     </section>
-    <div class="container-fluid" align="left" style="margin-top: 10px">
-      <b-button :disabled="!query.length" @click="showWeather" variant="primary">Search</b-button>
-      <!-- <b-button  variant="danger" @click="onReset">Reset</b-button> -->
-    </div>
+
     <div class="container-fluid">
       <child-humidity v-if="weatherData" :data="weatherData"></child-humidity>
+      <child-icon v-if="weatherData" :icon="icon"></child-icon>
+    </div>
+    <div class="container-fluid" align="left" style="margin-top: 10px">
+      <b-button :disabled="!query.length" @click="showWeather" variant="primary">Search</b-button>
     </div>
   </b-container>
 </template>
@@ -46,13 +44,15 @@
 <script>
 import { API_KEY, URL } from "../../service/const";
 import Humidityweather from "./Humidityweather";
+import Imageweather from "./Imageweather";
 
 export default {
   name: "Searchweather",
-  components: { "child-humidity": Humidityweather },
-  created: function() {
-    this.showTemps();
+  components: {
+    "child-humidity": Humidityweather,
+    "child-icon": Imageweather
   },
+
   data() {
     return {
       query: "",
@@ -92,11 +92,6 @@ export default {
           // eslint-disable-next-line no-console
           console.log(Object.keys(error), error.message);
         });
-    },
-    showTemps: function() {},
-    showIcon: function() {},
-    showAll: function() {
-      this.showWeather();
     },
     onReset() {
       this.show = false;

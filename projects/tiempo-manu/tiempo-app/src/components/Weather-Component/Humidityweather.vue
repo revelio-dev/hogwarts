@@ -22,22 +22,12 @@
 </template>
 
 <script>
-import { API_KEY, URL } from "../../service/const";
-
 export default {
   name: "Humidityweather",
   props: ["data"],
-
-  data() {
-    return {
-      tableVariant: "info"
-    };
-  },
-  computed: {},
   mounted() {
     console.log(this.temp);
-  },
-  methods: {}
+  }
 };
 </script>
 
