@@ -6,7 +6,7 @@
 
 <script>
 
-    import {API_KEY, URL} from '../../service/const'
+   // import {API_KEY, URL} from '../../service/const'
 
 
     export default {

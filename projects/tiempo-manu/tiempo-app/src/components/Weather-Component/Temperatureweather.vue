@@ -1,13 +1,1 @@
-<template>
-    
-</template>
-
-<script>
-    export default {
-        name: "Temperatureweather"
-    }
-</script>
-
-<style scoped>
-
-</style>
+TODO Component that shows temperature and humidity values
