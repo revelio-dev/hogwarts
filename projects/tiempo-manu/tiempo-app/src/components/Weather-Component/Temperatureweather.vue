@@ -1,1 +1,0 @@
-TODO Component that shows temperature and humidity values
