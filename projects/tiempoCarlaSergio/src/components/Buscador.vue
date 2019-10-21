@@ -1,8 +1,8 @@
 <template>
-  <b-form @submit.stop.prevent="search()">
+  <b-form @submit.stop.prevent="changeUrl()">
     <b-form-group id="input-group-1" label="Ubicación: " label-for="input-1">
       <div class="d-flex justify-content-center">
-        <b-form-input  @keyup.enter="search()" v-model="param"  id="input-1" required placeholder="Ubicación"></b-form-input>
+        <b-form-input  @keyup.enter="changeUrl()" v-model="param"  id="input-1" required placeholder="Ubicación"></b-form-input>
         <b-button type="submit"  class="ml-2">Mostrar</b-button>
       </div>
     </b-form-group>
@@ -27,13 +27,18 @@ export default {
     }
   },
   mounted (){
-    
+    if(this.$route.query.ubicacion){
+      this.search(this.$route.query.ubicacion);
+    }
   },
   methods: {
-    search: function() {
+    changeUrl(){
+      this.$router.push({ name: 'detalles', query: { ubicacion: this.param } }).catch(err => { });
+    },
+    search: function(ubicacion) {
       this.buscando = true
       axios
-     .get(`https://api.openweathermap.org/data/2.5/weather?q=${ this.param },es&appid=375b5b72defecfdfccfa090d50f49db4&lang=es&units=metric`)
+     .get(`https://api.openweathermap.org/data/2.5/weather?q=${ ubicacion },es&appid=375b5b72defecfdfccfa090d50f49db4&lang=es&units=metric`)
      .then(response => {
        this.ciudades = response.data;
        this.ciudadEncontrada.nombre = this.ciudades.name;
@@ -54,6 +59,15 @@ export default {
           this.$emit('change', null)
         }
      })
+    }
+  },
+   watch: {
+    $route(to, from) {
+
+      if(this.$route.query.ubicacion){
+        this.search(this.$route.query.ubicacion)
+      }
+      
     }
   }
 };
