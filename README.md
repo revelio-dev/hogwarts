@@ -1,8 +1,29 @@
-# hogwarts
+# tiempo-app
 
-Recursos, desafíos y proyectos para aprender y mejorar
+## Project setup
+```
+npm install
+```
 
-## Proyectos
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-- [App para consultar el tiempo](projects/app-consultar-el-tiempo.md)
+### Compiles and minifies for production
+```
+npm run build
+```
 
+### Run your tests
+```
+npm run test
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
