@@ -92,7 +92,7 @@ export default {
           this.overcast = response.data.weather[0].description;
           this.cod = response.data.weather[0].icon;
           this.icon =
-            "http://openweathermap.org/img/wn/" + this.cod + "@2x.png";
+            "https://openweathermap.org/img/wn/" + this.cod + "@2x.png";
           this.sunrise = new Date(response.data.sys.sunrise * 1000)
             .toLocaleTimeString("es-ES")
             .slice(0, 4);
