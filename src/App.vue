@@ -79,10 +79,6 @@ main {
   font-size: 1.4rem;
   padding: 2rem 25%;
   line-height: 1.6;
-}
-@media all and (max-width: 400px) {
-  main {
-    padding: 2rem;
-  }
+
 }
 </style>

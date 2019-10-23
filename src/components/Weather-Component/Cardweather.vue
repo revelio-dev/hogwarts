@@ -1,31 +1,51 @@
 <template>
-  <div id="card-weather" v-cloak>
-    <div class="container col-6">
-      <b-card
-        header="Weather APP"
-        header-tag="header"
-        title="Your Weather"
-        no-body
-        class="overflow-hidden"
-        style="max-width: 740px;"
-      >
-        <b-row no-gutters>
-          <b-col md="6">
-            <b-card-img :src="icon" class="rounded-0"></b-card-img>
-          </b-col>
-          <b-col md="6">
-            <b-card-header header-bg-variant="warning">{{city}},{{country}}</b-card-header>
-            <b-card-body body-bg-variant="success">
-              <b-card-text>Humidity: {{weatherData.humidity}}</b-card-text>
-              <b-card-text>Max. Temperature: {{weatherData.tempMax}}</b-card-text>
-              <b-card-text>Min. Temperature: {{weatherData.tempMin}}</b-card-text>
-              <b-card-text>Temperature: {{weatherData.temp}}</b-card-text>
-            </b-card-body>
-          </b-col>
-        </b-row>
-      </b-card>
-      <b-card-footer footer-bg-variant="primary"></b-card-footer>
-    </div>
+  <div class="container-fluid col-6">
+    <b-card
+      no-body
+      class="overflow-hidden"
+      header="Weather APP"
+      header-tag="header"
+      style="max-width: 540px;"
+    >
+      <b-row no-gutters class="align-content-center absolute">
+        <b-col md="6">
+          <b-card-img
+            :src="icon"
+            class="rounded-0"
+            style="background-color: #333333; max-height: 248px;"
+          ></b-card-img>
+        </b-col>
+        <b-col md="6">
+          <b-card-body title="Your Weather now is" body-class="text col-form-label-lg">
+            <b-card-text>Humedad: {{weatherData.humidity}}</b-card-text>
+            <b-card-text>Temperatura: {{weatherData.temp}}</b-card-text>
+            <b-card-text>Max. Temperatura: {{weatherData.tempMax}}</b-card-text>
+            <b-card-text>Min. Temperatura: {{weatherData.tempMin}}</b-card-text>
+          </b-card-body>
+        </b-col>
+      </b-row>
+      <div class="marquee">
+        <div>
+          <b-card-footer footer-class="marquee">
+            <span>
+              <b-card-text>
+                El amanecer en {{city}} está pronosticado a las {{sunrise}}.
+                <img
+                  src="@/assets/images/wi-sunrise.svg"
+                  style="height:30px"
+                />
+                Para el dia de hoy tenemos actualmente, una temperatura de {{weatherData.temp}} ºC. con {{weatherDescription}}.
+                El atardecer esta pronosticado a las {{sunset}}.
+                <img
+                  src="@/assets/images/wi-sunset.svg"
+                  style="height:30px"
+                />  Propicios dias, ciudadano.
+              </b-card-text>
+            </span>
+          </b-card-footer>
+        </div>
+      </div>
+    </b-card>
   </div>
 </template>
 
@@ -36,7 +56,7 @@ export default {
   data() {
     return {
       weatherDescription: "",
-      weatherData: null,
+      weatherData: {},
       sunrise: "",
       sunset: "",
       pressure: "",
@@ -89,10 +109,10 @@ export default {
       const lat = position.coords.latitude;
       const lon = position.coords.longitude;
 
-      this.getWeather(URL_GEO + "&lat=" + lat + "&lon=" + lon + API_KEY);
+      this.getWeather(URL_GEO + "&lat=" + lat + "&lon=" + lon +"&units=metric&lang=es"+ API_KEY);
     },
     geoError() {
-      this.getWeather(URL_GEO + "&lat=0&lon=0" + API_KEY);
+      this.getWeather(URL_GEO + "&lat=0&lon=0&units=metric&lang=es" + API_KEY);
     }
   },
   beforeMount() {
@@ -102,4 +122,45 @@ export default {
 </script>
 
 <style>
+.text {
+  color: #ffffff;
+  background: #333333;
+  text-shadow: 0 -1px 4px #fff, 0 -2px 10px #ff0, 0 -10px 20px #ff8000,
+    0 -18px 40px #f00;
+  color: #ffffff;
+  background: #333333;
+  text-align: center;
+}
+body {
+  margin: 20px;
+}
+.marquee {
+  overflow: hidden;
+  position: relative;
+  height: 50px;
+  width: 100%;
+}
+
+.marquee div {
+  display: block;
+  width: 1500px;
+  height: 750px;
+  position: absolute;
+  overflow: hidden;
+  animation: marquee 15s linear infinite;
+}
+
+.marquee span {
+  float: right;
+  width: 100%;
+}
+
+@keyframes marquee {
+  10% {
+    left: 0;
+  }
+  100% {
+    left: -100%;
+  }
+}
 </style>

@@ -2,7 +2,7 @@
   <b-container class="bv-example-row bv-example-row-flex-cols">
     <b-row align-self="center">
       <b-col cols="8">
-        <b-form @submit="showWeather" v-if="show">
+        <b-form @submit.prevent="showWeather" v-if="show">
           <b-form-group
             id="input-group-1"
             label="Enter the city name to check your current weather:"
