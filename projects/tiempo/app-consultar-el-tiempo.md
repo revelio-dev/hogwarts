@@ -4,8 +4,11 @@
 
 Links a proyectos:
 
-¡Todavía no hemos recibido ninguno! 
 Haz tu versión y envíanos una pull request con la URL a tu proyecto para incluírlo aquí.
+
+- https://github.com/seralot/AppTiempo
+- https://github.com/carlacid/Tiempoapp
+- https://github.com/CM-CA/hogwarts
 
 ## Tareas
 
