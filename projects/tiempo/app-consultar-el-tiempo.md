@@ -6,9 +6,9 @@ Links a proyectos:
 
 Haz tu versión y envíanos una pull request con la URL a tu proyecto para incluírlo aquí.
 
-- https://github.com/seralot/AppTiempo
-- https://github.com/carlacid/Tiempoapp
-- https://github.com/CM-CA/hogwarts
+- [seralot-AppTiempo](https://github.com/seralot/AppTiempo)
+- [carlacid-Tiempoapp](https://github.com/carlacid/Tiempoapp)
+- [CM-CA](https://github.com/CM-CA/hogwarts)
 
 ## Tareas
 
