@@ -1,6 +1,9 @@
 {
   "name": "tiempo-app",
   "version": "0.1.0",
+  "engines": {
+    "node": "10.17.0"
+  },
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
