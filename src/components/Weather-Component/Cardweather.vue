@@ -66,7 +66,9 @@ export default {
       location: "",
       city: "",
       country: "",
-      cod: null
+      cod: null,
+      dismissSecs: 5,
+      dismissCountDown: 0
     };
   },
   methods: {
@@ -113,8 +115,12 @@ export default {
     },
     geoError() {
       this.getWeather(URL_GEO + "&lat=0&lon=0&units=metric&lang=es" + API_KEY);
+      this.showAlert();
     }
   },
+  showAlert() {
+      this.dismissCountDown = this.dismissSecs;
+    },
   beforeMount() {
     this.geolocation();
   }
