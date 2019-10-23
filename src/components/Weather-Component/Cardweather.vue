@@ -1,12 +1,22 @@
 <template>
   <div class="container-fluid col-6">
-    <b-card no-body class="overflow-hidden" style="max-width: 540px;">
-      <b-row no-gutters>
+    <b-card
+      no-body
+      class="overflow-hidden"
+      header="Weather APP"
+      header-tag="header"
+      style="max-width: 540px;"
+    >
+      <b-row no-gutters class="align-content-center absolute">
         <b-col md="6">
-          <b-card-img :src="icon" class="rounded-0" style="background-color:blue"></b-card-img>
+          <b-card-img
+            :src="icon"
+            class="rounded-0"
+            style="background-color: #333333; max-height: 248px;"
+          ></b-card-img>
         </b-col>
         <b-col md="6">
-          <b-card-body title="Your Weather now is">
+          <b-card-body title="Your Weather now is" body-class="text col-form-label-lg">
             <b-card-text>Humidity: {{weatherData.humidity}}</b-card-text>
             <b-card-text>Temperature: {{weatherData.temp}}</b-card-text>
             <b-card-text>Max. Temperature: {{weatherData.tempMax}}</b-card-text>
@@ -14,6 +24,27 @@
           </b-card-body>
         </b-col>
       </b-row>
+      <div class="marquee">
+        <div>
+          <b-card-footer footer-class="marquee">
+            <span>
+              <b-card-text>
+                The Sunrise in your city {{city}} is pronosticated at {{sunrise}}.
+                <img
+                  src="@/assets/images/wi-sunrise.svg"
+                  style="height:30px"
+                />
+                For today you have a temperature of {{weatherData.temp}} ºC. and {{weatherDescription}}.
+                The Sunset is pronosticated at {{sunset}}
+                <img
+                  src="@/assets/images/wi-sunset.svg"
+                  style="height:30px"
+                />
+              </b-card-text>
+            </span>
+          </b-card-footer>
+        </div>
+      </div>
     </b-card>
   </div>
 </template>
@@ -25,7 +56,7 @@ export default {
   data() {
     return {
       weatherDescription: "",
-      weatherData: null,
+      weatherData: {},
       sunrise: "",
       sunset: "",
       pressure: "",
@@ -91,4 +122,45 @@ export default {
 </script>
 
 <style>
+.text {
+  color: #ffffff;
+  background: #333333;
+  text-shadow: 0 -1px 4px #fff, 0 -2px 10px #ff0, 0 -10px 20px #ff8000,
+    0 -18px 40px #f00;
+  color: #ffffff;
+  background: #333333;
+  text-align: center;
+}
+body {
+  margin: 20px;
+}
+.marquee {
+  overflow: hidden;
+  position: relative;
+  height: 50px;
+  width: 100%;
+}
+
+.marquee div {
+  display: block;
+  width: 1500px;
+  height: 750px;
+  position: absolute;
+  overflow: hidden;
+  animation: marquee 15s linear infinite;
+}
+
+.marquee span {
+  float: right;
+  width: 100%;
+}
+
+@keyframes marquee {
+  10% {
+    left: 0;
+  }
+  100% {
+    left: -100%;
+  }
+}
 </style>
