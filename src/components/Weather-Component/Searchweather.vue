@@ -90,7 +90,7 @@ export default {
           };
           this.cod = response.data.weather[0].icon;
           this.icon =
-            "http://openweathermap.org/img/wn/" + this.cod + "@2x.png";
+            "https://openweathermap.org/img/wn/" + this.cod + "@2x.png";
           this.error = false;
         })
         .catch(error => {

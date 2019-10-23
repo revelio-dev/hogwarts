@@ -66,7 +66,9 @@ export default {
       location: "",
       city: "",
       country: "",
-      cod: null
+      cod: null,
+      dismissSecs: 5,
+      dismissCountDown: 0
     };
   },
   methods: {
@@ -90,7 +92,7 @@ export default {
           this.overcast = response.data.weather[0].description;
           this.cod = response.data.weather[0].icon;
           this.icon =
-            "http://openweathermap.org/img/wn/" + this.cod + "@2x.png";
+            "https://openweathermap.org/img/wn/" + this.cod + "@2x.png";
           this.sunrise = new Date(response.data.sys.sunrise * 1000)
             .toLocaleTimeString("es-ES")
             .slice(0, 4);
@@ -113,8 +115,12 @@ export default {
     },
     geoError() {
       this.getWeather(URL_GEO + "&lat=0&lon=0&units=metric&lang=es" + API_KEY);
+      this.showAlert();
     }
   },
+  showAlert() {
+      this.dismissCountDown = this.dismissSecs;
+    },
   beforeMount() {
     this.geolocation();
   }
