@@ -17,10 +17,10 @@
         </b-col>
         <b-col md="6">
           <b-card-body title="Your Weather now is" body-class="text col-form-label-lg">
-            <b-card-text>Humidity: {{weatherData.humidity}}</b-card-text>
-            <b-card-text>Temperature: {{weatherData.temp}}</b-card-text>
-            <b-card-text>Max. Temperature: {{weatherData.tempMax}}</b-card-text>
-            <b-card-text>Min. Temperature: {{weatherData.tempMin}}</b-card-text>
+            <b-card-text>Humedad: {{weatherData.humidity}}</b-card-text>
+            <b-card-text>Temperatura: {{weatherData.temp}}</b-card-text>
+            <b-card-text>Max. Temperatura: {{weatherData.tempMax}}</b-card-text>
+            <b-card-text>Min. Temperatura: {{weatherData.tempMin}}</b-card-text>
           </b-card-body>
         </b-col>
       </b-row>
@@ -29,17 +29,17 @@
           <b-card-footer footer-class="marquee">
             <span>
               <b-card-text>
-                The Sunrise in your city {{city}} is pronosticated at {{sunrise}}.
+                El amanecer en {{city}} está pronosticado a las {{sunrise}}.
                 <img
                   src="@/assets/images/wi-sunrise.svg"
                   style="height:30px"
                 />
-                For today you have a temperature of {{weatherData.temp}} ºC. and {{weatherDescription}}.
-                The Sunset is pronosticated at {{sunset}}
+                Para el dia de hoy tenemos actualmente, una temperatura de {{weatherData.temp}} ºC. con {{weatherDescription}}.
+                El atardecer esta pronosticado a las {{sunset}}.
                 <img
                   src="@/assets/images/wi-sunset.svg"
                   style="height:30px"
-                />
+                />  Propicios dias, ciudadano.
               </b-card-text>
             </span>
           </b-card-footer>
@@ -109,10 +109,10 @@ export default {
       const lat = position.coords.latitude;
       const lon = position.coords.longitude;
 
-      this.getWeather(URL_GEO + "&lat=" + lat + "&lon=" + lon + API_KEY);
+      this.getWeather(URL_GEO + "&lat=" + lat + "&lon=" + lon +"&units=metric&lang=es"+ API_KEY);
     },
     geoError() {
-      this.getWeather(URL_GEO + "&lat=0&lon=0" + API_KEY);
+      this.getWeather(URL_GEO + "&lat=0&lon=0&units=metric&lang=es" + API_KEY);
     }
   },
   beforeMount() {
