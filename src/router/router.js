@@ -5,6 +5,9 @@ import Home from '../views/Home'
 import About from "../views/About";
 import Errorpage from "../views/Errorpage";
 import Searchweather from "../components/Weather-Component/Searchweather";
+import Cardweather from "../components/Weather-Component/Cardweather"
+
+
 
 Vue.use(Router);
 
@@ -22,6 +25,10 @@ export default new Router({
         path: "/app",
         name: "weather",
         component: Searchweather
+    }, {
+        path: "/app/card",
+        name: "cardweather",
+        component: Cardweather
     }, {
         path: "*",
         name: '404',

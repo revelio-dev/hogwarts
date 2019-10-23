@@ -77,7 +77,7 @@ export default {
     showWeather: function() {
       this.show = true;
       this.$http
-        .get(URL + this.query + "&units=metric&lang=es&APPID=" + API_KEY)
+        .get(URL + this.query + "&units=metric&lang=es" + API_KEY)
         .then(response => {
           this.city = response.data.name;
           this.country = response.data.sys.country;

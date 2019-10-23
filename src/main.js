@@ -6,7 +6,7 @@ import BootstrapVue from "bootstrap-vue";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import axios from 'axios'
-
+import VueGeolocation from 'vue-browser-geolocation';
 import { TableSimplePlugin, BTableSimple, BThead, BTr, BTh, BTbody, BTd } from 'bootstrap-vue'
 
 import '../src/assets/css/app.css'
@@ -16,6 +16,7 @@ Vue.config.productionTip = false;
 Vue.config.app = process.env;
 
 Vue.use(BootstrapVue, TableSimplePlugin);
+Vue.use(VueGeolocation);
 Vue.component('b-table-simple', BTableSimple);
 Vue.component('b-thead', BThead);
 Vue.component('b-tr', BTr);
