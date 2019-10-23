@@ -1,31 +1,20 @@
 <template>
-  <div id="card-weather" v-cloak>
-    <div class="container col-6">
-      <b-card
-        header="Weather APP"
-        header-tag="header"
-        title="Your Weather"
-        no-body
-        class="overflow-hidden"
-        style="max-width: 740px;"
-      >
-        <b-row no-gutters>
-          <b-col md="6">
-            <b-card-img :src="icon" class="rounded-0"></b-card-img>
-          </b-col>
-          <b-col md="6">
-            <b-card-header header-bg-variant="warning">{{city}},{{country}}</b-card-header>
-            <b-card-body body-bg-variant="success">
-              <b-card-text>Humidity: {{weatherData.humidity}}</b-card-text>
-              <b-card-text>Max. Temperature: {{weatherData.tempMax}}</b-card-text>
-              <b-card-text>Min. Temperature: {{weatherData.tempMin}}</b-card-text>
-              <b-card-text>Temperature: {{weatherData.temp}}</b-card-text>
-            </b-card-body>
-          </b-col>
-        </b-row>
-      </b-card>
-      <b-card-footer footer-bg-variant="primary"></b-card-footer>
-    </div>
+  <div class="container-fluid col-6">
+    <b-card no-body class="overflow-hidden" style="max-width: 540px;">
+      <b-row no-gutters>
+        <b-col md="6">
+          <b-card-img :src="icon" class="rounded-0" style="background-color:blue"></b-card-img>
+        </b-col>
+        <b-col md="6">
+          <b-card-body title="Your Weather now is">
+            <b-card-text>Humidity: {{weatherData.humidity}}</b-card-text>
+            <b-card-text>Temperature: {{weatherData.temp}}</b-card-text>
+            <b-card-text>Max. Temperature: {{weatherData.tempMax}}</b-card-text>
+            <b-card-text>Min. Temperature: {{weatherData.tempMin}}</b-card-text>
+          </b-card-body>
+        </b-col>
+      </b-row>
+    </b-card>
   </div>
 </template>
 
