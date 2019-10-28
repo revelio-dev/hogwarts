@@ -4,7 +4,8 @@ Recursos, desafíos y proyectos para aprender y mejorar
 
 ## Proyectos
 
-- [App para consultar el tiempo](projects/tiempo/app-consultar-el-tiempo.md)
+- [Front con VueJS para consultar el tiempo](projects/vuejs-front-el-tiempo/README.md)
+- [Backend con DJango API del tiempo](projects/django-backend-el-tiempo/README.md)
 
 ## Desafíos
 
