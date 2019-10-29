@@ -26,6 +26,7 @@ Las siguientes tareas están pensadas para realizar paso a paso, antes de contin
 
 Crear la primera URL/Vista JSON de nuestro backend.
 
+- Crear una [app de django](https://docs.djangoproject.com/es/2.2/intro/tutorial01/#creating-the-polls-app) donde alojar nuestro código
 - [Crear vista hola mundo de django](https://docs.djangoproject.com/en/2.2/ref/class-based-views/base/#view)
 - Cambiar URL de ejemplo a una URL semántica con lo que vamos a realizar, es decir, la URL de obtención de datos para nuestra API.
 En lugar de "mine/" a otro segmento que escojamos. Nuestro front llamara a este endpoint con un GET "mine/".
