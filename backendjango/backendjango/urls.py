@@ -20,6 +20,6 @@ from weatherbackend.views import HelloWorld,WeatherApi
 
 urlpatterns = [
     path ( 'admin/', admin.site.urls ),
-    path('hello-world/',HelloWorld.as_view,name='hello-world'),
-    path ( 'weather/', WeatherApi.getapi, name='weather-api' )
+    path('hello-world/',HelloWorld.as_view(),name='hello-world'),
+    path ( 'api/weather/', WeatherApi.as_view(), name='weather-api' )
 ]
