@@ -1,10 +1,9 @@
 <template>
-  <div>
-    <h1>Index</h1>
-  </div>
+  <h1>Weather</h1>
 </template>
 
 <script>
+export default {};
 </script>
 
 <style>
