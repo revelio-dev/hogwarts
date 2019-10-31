@@ -1,7 +1,13 @@
 <template>
   <div>
+    <!-- latest -->
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+    <!-- core style only -->
+    <link href="https://unpkg.com/nes.css/css/nes-core.min.css" rel="stylesheet" />
     <danavbar />
-    <nuxt />
+    <div class="container container-fluid">
+      <nuxt />
+    </div>
   </div>
 </template>
 <script>
@@ -14,4 +20,5 @@ export default {
 };
 </script>
 <style>
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap");
 </style>
