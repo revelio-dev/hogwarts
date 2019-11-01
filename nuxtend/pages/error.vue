@@ -1,11 +1,7 @@
 <template>
-  <div>
-    <h1>Index</h1>
-  </div>
+  <div></div>
 </template>
-
 <script>
 </script>
-
-<style>
+<style scoped>
 </style>
